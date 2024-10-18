@@ -21,6 +21,7 @@ export default {
       required: true,
     },
   },
+  emits: ['error'],
   data() {
     return {
       show: false,
@@ -127,7 +128,7 @@ export default {
     </audio>
     <GalleryView
       v-if="show"
-      :show.sync="show"
+      v-model:show="show"
       :attachment="attachment"
       :all-attachments="filteredCurrentChatAttachments"
       @error="onImgError"
