@@ -53,7 +53,8 @@ class Attachment < ApplicationRecord
   # NOTE: the URl returned does a 301 redirect to the actual file
   def file_url
     if file.attached?
-      Rails.application.routes.url_helpers.rails_blob_url(file, host: account.domain, protocol: 'https')
+      subdomain = "chat.#{account.domain}"
+      Rails.application.routes.url_helpers.rails_blob_url(file, host: subdomain, protocol: 'https')
     else
       ''
     end
